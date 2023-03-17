@@ -18,17 +18,17 @@ fun NavGraph(navController: NavHostController) {
             SplashScreen(navController = navController)
         }
 
-        composable(route = FeatureNavItem.DeviceHolderListing.route) {
-
-            // TODO: add device holder screen
-
-        }
-
-
-        composable(route = FeatureNavItem.Splash.route) {
-            // todo add device holder details screen route
-
-         }
+//        composable(route = FeatureNavItem.DeviceHolderListing.route) {
+//
+//            // TODO: add device holder screen
+//
+//        }
+//
+//
+//        composable(route = FeatureNavItem.Splash.route) {
+//            // todo add device holder details screen route
+//
+//         }
 
     }
 }
