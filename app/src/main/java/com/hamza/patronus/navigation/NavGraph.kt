@@ -34,17 +34,6 @@ fun setupNavGraph(navController: NavHostController) {
             DeviceHolderDetailScreen(navController = navController, userId = userId)
         }
 
-//        composable(
-//            route = Screens.DeviceHolderDetail.route,
-//            arguments = listOf(navArgument("userId"){
-//                type = NavType.StringType
-//            })
-//
-//        ){
-//            val userId = it.arguments?.getString("userId") ?: ""
-//            DeviceHolderDetailScreen(navController = navController, userId = "" )
-//        }
-
 
     }
 }

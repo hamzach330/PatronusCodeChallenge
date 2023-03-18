@@ -47,9 +47,7 @@ fun DeviceHolderListingScreen(
     }
 
     val onListItemClick = { deviceHolder: DeviceHolder ->
-         navController.navigate(Screens.DeviceHolderDetail.route.replace("/userId", deviceHolder.id.toString()))
-         //navController.navigate(route = Screens.DeviceHolderDetail.route + deviceHolder.id)
-        println("LISTING SCREEN CLICK ROUTE == "+Screens.DeviceHolderDetail.route + deviceHolder.id.toString())
+         navController.navigate(Screens.DeviceHolderDetail.route.replace(oldValue = "{userId}", newValue = "${deviceHolder.id}" ))
     }
 
     Scaffold(

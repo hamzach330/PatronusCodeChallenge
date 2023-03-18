@@ -1,8 +1,7 @@
 package com.hamza.patronus.features.deviceholder_details.di
 
-import com.hamza.doctorboxtest.features.user_details.data.remote.DeviceHolderDetailsApi
+import com.hamza.patronus.features.deviceholder_details.data.remote.DeviceHolderDetailsApi
 import com.hamza.patronus.features.deviceholder_details.data.DeviceHolderDetailRepositoryImpl
-import com.hamza.patronus.features.deviceholder_details.domain.model.DeviceHolderDetail
 import com.hamza.patronus.features.deviceholder_details.domain.repository.DeviceHolderDetailRepository
 import com.hamza.patronus.features.deviceholder_details.use_case.DeviceHolderDetailUsecase
 import dagger.Module

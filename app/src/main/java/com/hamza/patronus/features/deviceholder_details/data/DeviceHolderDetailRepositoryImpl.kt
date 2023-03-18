@@ -1,6 +1,6 @@
 package com.hamza.patronus.features.deviceholder_details.data
 
-import com.hamza.doctorboxtest.features.user_details.data.remote.DeviceHolderDetailsApi
+import com.hamza.patronus.features.deviceholder_details.data.remote.DeviceHolderDetailsApi
 import com.hamza.patronus.core.utils.json_parser.Resource
 import com.hamza.patronus.features.deviceholder_details.domain.model.DeviceHolderDetail
 import com.hamza.patronus.features.deviceholder_details.domain.repository.DeviceHolderDetailRepository
@@ -16,8 +16,10 @@ class DeviceHolderDetailRepositoryImpl @Inject constructor(
         flow {
             emit(Resource.Loading())
 
+            println("API ==" + userId)
             kotlin.runCatching {
                 remoteApi.getDeviceHolderDetail(userId)
+
             }.onSuccess {
                 emit(Resource.Success(it))
             }.onFailure {

@@ -11,7 +11,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.hamza.doctorboxtest.features.user_details.presentation.components.DeviceHolderDetailView
+import com.hamza.patronus.features.deviceholder_details.presentation.components.DeviceHolderDetailView
 import com.hamza.patronus.core.utils.common_ui_components.GlobalUiEvent
 import com.hamza.patronus.core.utils.common_ui_components.LoadingView
 import com.hamza.patronus.core.utils.common_ui_components.RetryLoading
@@ -29,6 +29,7 @@ fun DeviceHolderDetailScreen(
     val scaffoldState = rememberScaffoldState()
 
     LaunchedEffect(key1 = true) {
+
         viewmodel.loadDeviceHolderDetails(userId)
         viewmodel.eventFlow.collectLatest { event ->
             when (event) {
@@ -50,13 +51,11 @@ fun DeviceHolderDetailScreen(
                         .fillMaxHeight()
                 )
             }
-
             if (!state.isLoading && state.deviceHolderDetail == null) {
                 RetryLoading(message = "stringResource(R.string.no_data_available)", onClickRetry = {
                     viewmodel.loadDeviceHolderDetails(userId)
                 })
             }
-
             state.deviceHolderDetail?.let {
                 DeviceHolderDetailView(it)
             }
