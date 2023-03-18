@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.hamza.patronus.features.deviceholder_listing.presentation.DeviceHolderListingScreen
 import com.hamza.patronus.features.splash.SplashScreen
 
 
@@ -18,11 +19,9 @@ fun NavGraph(navController: NavHostController) {
             SplashScreen(navController = navController)
         }
 
-//        composable(route = FeatureNavItem.DeviceHolderListing.route) {
-//
-//            // TODO: add device holder screen
-//
-//        }
+        composable(route = FeatureNavItem.DeviceHolderListing.route) {
+            DeviceHolderListingScreen(navController = navController)
+        }
 //
 //
 //        composable(route = FeatureNavItem.Splash.route) {

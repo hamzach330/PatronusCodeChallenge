@@ -4,7 +4,6 @@ package com.hamza.patronus.features.splash
 import android.view.animation.OvershootInterpolator
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,12 +18,10 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.hamza.patronus.R
 import com.hamza.patronus.navigation.FeatureNavItem
 import com.hamza.patronus.ui.theme.SplashGradientEnd
 import com.hamza.patronus.ui.theme.SplashGradientStart
@@ -51,10 +48,10 @@ fun SplashScreen(navController: NavController) {
                     OvershootInterpolator(2f).getInterpolation(it)
                 })
         )
-        delay(2000)
-//        navController.navigate(FeatureNavItem.DeviceHolderListing.route) {
-//            popUpTo(0) /// remove for stack for not coming back to splash.
-//        }
+        //delay(2000)
+        navController.navigate(FeatureNavItem.DeviceHolderListing.route) {
+            popUpTo(0) /// remove for stack for not coming back to splash.
+        }
     }
 
     Box(
