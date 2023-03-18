@@ -22,10 +22,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.hamza.patronus.navigation.FeatureNavItem
+import com.hamza.patronus.navigation.Screens
 import com.hamza.patronus.ui.theme.SplashGradientEnd
 import com.hamza.patronus.ui.theme.SplashGradientStart
-import kotlinx.coroutines.delay
 import kotlin.math.PI
 import kotlin.math.pow
 import kotlin.math.sqrt
@@ -49,7 +48,7 @@ fun SplashScreen(navController: NavController) {
                 })
         )
         //delay(2000)
-        navController.navigate(FeatureNavItem.DeviceHolderListing.route) {
+        navController.navigate(Screens.DeviceHolderListing.route) {
             popUpTo(0) /// remove for stack for not coming back to splash.
         }
     }

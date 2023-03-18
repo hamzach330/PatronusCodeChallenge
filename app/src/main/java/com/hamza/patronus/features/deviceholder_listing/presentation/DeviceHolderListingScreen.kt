@@ -11,7 +11,6 @@ import androidx.compose.material.Text
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -19,11 +18,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.hamza.doctorboxtest.features.users_listing.presentation.DeviceHolderItem
+import com.hamza.patronus.features.deviceholder_listing.presentation.components.DeviceHolderItem
 import com.hamza.patronus.core.utils.common_ui_components.GlobalUiEvent
 import com.hamza.patronus.core.utils.common_ui_components.LoadingView
 import com.hamza.patronus.core.utils.common_ui_components.RetryLoading
-import com.hamza.patronus.features.deviceholder_listing.domain.model.DeviceHolderItem
+import com.hamza.patronus.features.deviceholder_listing.domain.model.DeviceHolder
+import com.hamza.patronus.navigation.Screens
 import kotlinx.coroutines.flow.collectLatest
 
 
@@ -46,8 +46,10 @@ fun DeviceHolderListingScreen(
         }
     }
 
-    val onListItemClick = { deviceHolder: DeviceHolderItem ->
-        // navController.navigate(FeatureNavItem.UserDetails.route.replace("{userId}", user.login))
+    val onListItemClick = { deviceHolder: DeviceHolder ->
+         navController.navigate(Screens.DeviceHolderDetail.route.replace("/userId", deviceHolder.id.toString()))
+         //navController.navigate(route = Screens.DeviceHolderDetail.route + deviceHolder.id)
+        println("LISTING SCREEN CLICK ROUTE == "+Screens.DeviceHolderDetail.route + deviceHolder.id.toString())
     }
 
     Scaffold(

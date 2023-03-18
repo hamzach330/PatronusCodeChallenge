@@ -1,4 +1,4 @@
-package com.hamza.doctorboxtest.features.users_listing.presentation
+package com.hamza.patronus.features.deviceholder_listing.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -14,20 +14,19 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.hamza.patronus.features.deviceholder_listing.domain.model.DeviceHolderItem
+import com.hamza.patronus.features.deviceholder_listing.domain.model.DeviceHolder
 import java.util.*
 
 
 @Composable
 fun DeviceHolderItem(
-    deviceHolder: DeviceHolderItem, onItemClick: (DeviceHolderItem) -> Unit
+    deviceHolder: DeviceHolder, onItemClick: (DeviceHolder) -> Unit
 ) {
 
     Box(
@@ -146,13 +145,6 @@ fun DeviceHolderItem(
 
             }
 
-
-//            Text(
-//                text = "${deviceHolder.firstName}".uppercase(),
-//                color = Color.Black,
-//                fontSize = 24.sp,
-//                fontWeight = FontWeight.W600
-//            )
         }
 
     }

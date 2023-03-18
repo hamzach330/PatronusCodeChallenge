@@ -3,16 +3,9 @@ package com.hamza.patronus
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.hamza.patronus.navigation.NavGraph
+import com.hamza.patronus.navigation.setupNavGraph
 import com.hamza.patronus.ui.theme.PatronusCodeChallengeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,7 +22,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             PatronusCodeChallengeTheme {
                 navController = rememberNavController()
-                NavGraph(navController = navController)
+                setupNavGraph(navController = navController)
                 println(" In the main activity")
             }
         }

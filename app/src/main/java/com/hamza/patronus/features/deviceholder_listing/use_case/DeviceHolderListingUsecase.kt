@@ -2,7 +2,6 @@ package com.hamza.patronus.features.deviceholder_listing.use_case
 
 import com.hamza.patronus.core.utils.json_parser.Resource
 import com.hamza.patronus.features.deviceholder_listing.domain.model.Customers
-import com.hamza.patronus.features.deviceholder_listing.domain.model.DeviceHolderItem
 import com.hamza.patronus.features.deviceholder_listing.domain.repository.DeviceHolderListingRepository
 import kotlinx.coroutines.flow.Flow
 

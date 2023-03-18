@@ -5,11 +5,11 @@ import com.google.gson.annotations.SerializedName
 
 data class Customers(
     @SerializedName("customers")
-    val deviceHolderList: List<DeviceHolderItem>
+    val deviceHolderList: List<DeviceHolder>
 )
 
 
-data class DeviceHolderItem(
+data class DeviceHolder(
     val id: Int,
     val firstName: String,
     val lastName: String,
