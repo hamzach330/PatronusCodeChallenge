@@ -5,10 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
@@ -24,6 +21,7 @@ import com.hamza.patronus.core.utils.common_ui_components.LoadingView
 import com.hamza.patronus.core.utils.common_ui_components.RetryLoading
 import com.hamza.patronus.features.deviceholder_listing.domain.model.DeviceHolder
 import com.hamza.patronus.navigation.Screens
+import com.hamza.patronus.ui.theme.ListDividerBg
 import kotlinx.coroutines.flow.collectLatest
 
 
@@ -87,17 +85,14 @@ fun DeviceHolderListingScreen(
 
                 LazyColumn(
                     contentPadding = PaddingValues(start = 24.dp, end = 24.dp),
-                    //verticalArrangement = Arrangement.spacedBy(10.dp),
-                    //modifier = Modifier.testTag(TestTags.USERS_LISTING)
                 ) {
                     items(items = state.deviceHolderListItems) { deviceHolder ->
                         DeviceHolderItem(deviceHolder = deviceHolder, onItemClick = onListItemClick)
-                        Box(
-                            Modifier
-                                .fillMaxWidth()
-                                .height(1.dp)
-                                .background(Color.Gray)
-                        ) //for after every element
+                        Divider(Modifier
+                            .fillMaxWidth()
+                            .height(1.dp)
+                            .background(ListDividerBg))
+
                     }
 
                 }

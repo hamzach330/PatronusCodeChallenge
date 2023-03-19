@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.hamza.patronus.features.deviceholder_listing.domain.model.DeviceHolder
+import com.hamza.patronus.ui.theme.*
 import java.util.*
 
 
@@ -39,7 +40,6 @@ fun DeviceHolderItem(
                 .fillMaxSize()
                 .padding(vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically,
-            //horizontalArrangement = Arrangement.spacedBy(12.dp)
 
         ) {
 
@@ -53,27 +53,26 @@ fun DeviceHolderItem(
                     contentDescription = "Profile Picture",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
-                        .border(2.dp, color = Color.White, shape = CircleShape)
+                        .border(2.dp, color = Color.Transparent, shape = CircleShape)
                         .clip(CircleShape)
-                        .size(80.dp)
+                        .size(64.dp)
                 )
             }
 
             else{
                 Text(
                     modifier = Modifier
-                        .border(2.dp, color = Color.LightGray, shape = CircleShape)
+                        .border(2.dp, color = ProfilePicBgGray, shape = CircleShape)
                         .clip(CircleShape)
-                        .size(80.dp)
-                        .background(Color.LightGray)
+                        .size(64.dp)
+                        .background(ProfilePicBgGray)
                         .wrapContentHeight(),
                     text = deviceHolder.firstName.take(1)+deviceHolder.lastName.take(1),
-                    fontSize = 35.sp,
+                    fontSize = 30.sp,
                     fontWeight = FontWeight.ExtraBold,
                     textAlign = TextAlign.Center,
-                    color = Color.Gray
-
-                    )
+                    color = ProfilePicTextGray
+                )
             }
 
 
@@ -83,28 +82,28 @@ fun DeviceHolderItem(
             Column {
                 Row() {
                     Text(
-                        text = deviceHolder.firstName + " "+deviceHolder.lastName,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 17.sp,
-                        color = Color.Black
+                        text = deviceHolder.firstName +" "+deviceHolder.lastName,
+                        fontWeight = FontWeight.ExtraBold,
+                        fontSize = 23.sp,
+                        color = TextBlack
                     )
 
                     Text(
                         modifier = Modifier.padding(start = 8.dp),
                         text = deviceHolder.gender.lowercase(Locale.ROOT)
                             .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() },
-                        fontSize = 17.sp,
-                        color = Color.DarkGray
+                        fontSize = 23.sp,
+                        color = TextLightGray
                     )
                 }
                 Row(
-                    modifier = Modifier.padding(top = 8.dp),
+                    modifier = Modifier.padding(top = 0.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
                         text = "${deviceHolder.phoneNumber}",
-                        fontSize = 17.sp,
-                        color = Color.Black
+                        fontSize = 23.sp,
+                        color = TextGray
                     )
 
                     deviceHolder.stickers.forEachIndexed { index, sticker ->
@@ -115,12 +114,13 @@ fun DeviceHolderItem(
                                     .padding(start = 8.dp)
                                     .border(
                                         width = 50.dp,
-                                        color = Color.Red.copy(alpha = 0.5f),
+                                        color = StickerBgRed.copy(alpha = 0.3f),
                                         shape = RoundedCornerShape(5.dp)
                                     )
                                     .padding(vertical = 2.dp, horizontal = 4.dp),
                                 text = sticker,
-                                color = Color.Red
+                                color = StickerTextRed,
+                                fontSize = 17.sp
                             )
                         } else {
                             Text(
@@ -128,12 +128,13 @@ fun DeviceHolderItem(
                                     .padding(start = 8.dp)
                                     .border(
                                         width = 50.dp,
-                                        color = Color.Gray.copy(alpha = 0.5f),
+                                        color = StickerBgGray.copy(alpha = 0.3f),
                                         shape = RoundedCornerShape(5.dp)
                                     )
                                     .padding(vertical = 2.dp, horizontal = 4.dp),
                                 text = sticker,
-                                color = Color.Gray
+                                color = StickerTextGray,
+                                fontSize = 17.sp
                             )
                         }
 

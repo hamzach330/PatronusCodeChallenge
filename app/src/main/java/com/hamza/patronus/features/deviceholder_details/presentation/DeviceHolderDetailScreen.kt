@@ -23,8 +23,7 @@ fun DeviceHolderDetailScreen(
     navController: NavController,
     viewmodel: DeviceHolderDetailViewModel = hiltViewModel(),
     userId: String
-)
-{
+) {
     val state = viewmodel.dataFlow.value
     val scaffoldState = rememberScaffoldState()
 
@@ -40,6 +39,8 @@ fun DeviceHolderDetailScreen(
         }
     }
 
+
+
     Scaffold(
         scaffoldState = scaffoldState,
         contentColor = MaterialTheme.colors.primaryVariant,
@@ -52,12 +53,16 @@ fun DeviceHolderDetailScreen(
                 )
             }
             if (!state.isLoading && state.deviceHolderDetail == null) {
-                RetryLoading(message = "stringResource(R.string.no_data_available)", onClickRetry = {
-                    viewmodel.loadDeviceHolderDetails(userId)
-                })
+                RetryLoading(
+                    message = "stringResource(R.string.no_data_available)",
+                    onClickRetry = {
+                        viewmodel.loadDeviceHolderDetails(userId)
+                    })
             }
             state.deviceHolderDetail?.let {
-                DeviceHolderDetailView(it)
+                DeviceHolderDetailView(
+                    deviceHolderDetail = it,
+                    onBackClick = { navController.popBackStack() })
             }
 
         }

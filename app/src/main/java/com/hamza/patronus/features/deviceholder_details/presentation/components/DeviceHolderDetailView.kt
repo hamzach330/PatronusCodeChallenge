@@ -24,21 +24,22 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.hamza.patronus.R
 import com.hamza.patronus.features.deviceholder_details.domain.model.DeviceHolderDetail
+import com.hamza.patronus.ui.theme.*
 
 
 @Composable
-fun DeviceHolderDetailView(deviceHolderDetail: DeviceHolderDetail) {
+fun DeviceHolderDetailView(deviceHolderDetail: DeviceHolderDetail, onBackClick: () -> Unit) {
 
     Box(
         modifier = Modifier
-            .padding(start = 24.dp, top = 34.dp, end = 24.dp)
+            .padding(start = 32.dp, top = 30.dp, end = 32.dp)
     ) {
 
 
         Column(modifier = Modifier.fillMaxSize()) {
             IconButton(
-                modifier = Modifier.size(40.dp),
-                onClick = { },
+                modifier = Modifier.size(53.dp),/*.clickable { onBackClick() }*/
+                onClick = { onBackClick() },
             ) {
                 Image(
                     painter = painterResource(R.drawable.back_arrow),
@@ -69,23 +70,23 @@ fun DeviceHolderDetailView(deviceHolderDetail: DeviceHolderDetail) {
                     contentDescription = "Profile Picture",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
-                        .border(2.dp, color = Color.White, shape = CircleShape)
+                        .border(2.dp, color = Color.Transparent, shape = CircleShape)
                         .clip(CircleShape)
-                        .size(80.dp)
+                        .size(64.dp)
                 )
             } else {
                 Text(
                     modifier = Modifier
-                        .border(2.dp, color = Color.LightGray, shape = CircleShape)
+                        .border(2.dp, color = ProfilePicBgGray, shape = CircleShape)
                         .clip(CircleShape)
-                        .size(80.dp)
-                        .background(Color.LightGray)
+                        .size(64.dp)
+                        .background(ProfilePicBgGray)
                         .wrapContentHeight(),
                     text = deviceHolderDetail.firstName.take(1) + deviceHolderDetail.lastName.take(1),
                     fontSize = 35.sp,
                     fontWeight = FontWeight.ExtraBold,
                     textAlign = TextAlign.Center,
-                    color = Color.Gray
+                    color = ProfilePicTextGray
 
                 )
             }
@@ -95,8 +96,8 @@ fun DeviceHolderDetailView(deviceHolderDetail: DeviceHolderDetail) {
             Text(
                 text = deviceHolderDetail.firstName + " " + deviceHolderDetail.lastName,
                 fontWeight = FontWeight.ExtraBold,
-                fontSize = 27.sp,
-                color = Color.Black
+                fontSize = 36.sp,
+                color = TextBlack
             )
 
             Spacer(modifier = Modifier.size(10.dp))
@@ -110,12 +111,13 @@ fun DeviceHolderDetailView(deviceHolderDetail: DeviceHolderDetail) {
                                 .padding(end = 8.dp)
                                 .border(
                                     width = 50.dp,
-                                    color = Color.Red.copy(alpha = 0.5f),
+                                    color = StickerBgRed.copy(alpha = 0.5f),
                                     shape = RoundedCornerShape(5.dp)
                                 )
                                 .padding(vertical = 2.dp, horizontal = 4.dp),
                             text = sticker,
-                            color = Color.Red
+                            color = StickerTextRed,
+                            fontSize = 17.sp
                         )
                     } else {
                         Text(
@@ -123,12 +125,13 @@ fun DeviceHolderDetailView(deviceHolderDetail: DeviceHolderDetail) {
                                 .padding(end = 8.dp)
                                 .border(
                                     width = 50.dp,
-                                    color = Color.Gray.copy(alpha = 0.5f),
+                                    color = StickerBgGray.copy(alpha = 0.5f),
                                     shape = RoundedCornerShape(5.dp)
                                 )
                                 .padding(vertical = 2.dp, horizontal = 4.dp),
                             text = sticker,
-                            color = Color.Gray
+                            color = StickerTextGray,
+                            fontSize = 17.sp
                         )
                     }
                 }
@@ -145,8 +148,8 @@ fun DeviceHolderDetailView(deviceHolderDetail: DeviceHolderDetail) {
                 Text(
                     text = deviceHolderDetail.gender,
                     fontWeight = FontWeight.Light,
-                    fontSize = 17.sp,
-                    color = Color.Gray
+                    fontSize = 23.sp,
+                    color = TextGray
                 )
 
                 Spacer(modifier = Modifier.size(10.dp))
@@ -155,15 +158,15 @@ fun DeviceHolderDetailView(deviceHolderDetail: DeviceHolderDetail) {
                         .width(2.dp)
                         .fillMaxHeight()
                         .padding(vertical = 2.dp),
-                    color = Color.Gray
+                    color = ListDividerBg
                 )
                 Spacer(modifier = Modifier.size(10.dp))
 
                 Text(
                     text = deviceHolderDetail.phoneNumber,
                     fontWeight = FontWeight.Light,
-                    fontSize = 17.sp,
-                    color = Color.Gray
+                    fontSize = 23.sp,
+                    color = TextGray
                 )
 
 
@@ -174,8 +177,8 @@ fun DeviceHolderDetailView(deviceHolderDetail: DeviceHolderDetail) {
             Text(
                 text = "ADDRESS",
                 fontWeight = FontWeight.ExtraBold,
-                fontSize = 15.sp,
-                color = Color.Black
+                fontSize = 20.sp,
+                color = TextGray
             )
 
             Spacer(modifier = Modifier.size(8.dp))
@@ -185,92 +188,10 @@ fun DeviceHolderDetailView(deviceHolderDetail: DeviceHolderDetail) {
                         + ", " + deviceHolderDetail.address.zip
                         + "\n" + deviceHolderDetail.address.country,
                 fontWeight = FontWeight.Light,
-                fontSize = 17.sp,
-                color = Color.Black
+                fontSize = 23.sp,
+                color = TextGray
             )
-
-
         }
-
-//
-//        Card(
-//            elevation = 4.dp,
-//            shape = RoundedCornerShape(20.dp),
-//            modifier = Modifier
-//                .background(Color.White)
-//                .fillMaxWidth()
-//                .padding(10.dp)
-//        ) {
-//            Column(
-//                verticalArrangement = Arrangement.Center,
-//                horizontalAlignment = Alignment.CenterHorizontally,
-//                modifier = Modifier
-//                    .background(Color.White)
-//                    .padding(0.dp, 15.dp, 0.dp, 15.dp)
-//
-//
-//            ) {
-//                AsyncImage(
-//                    model = ImageRequest.Builder(LocalContext.current)
-//                        .data(deviceHolderDetail.imageUrl)
-//                        .crossfade(true)
-//                        .build(),
-//                    contentDescription = "Profile Picture",
-//                    contentScale = ContentScale.Crop,
-//                    modifier = Modifier
-//                        .border(2.dp, color = Color.White, shape = CircleShape)
-//                        .clip(CircleShape)
-//                        .size(80.dp)
-//                )
-//                Text(
-//                    text = deviceHolderDetail.firstName ?: "N/A",
-//                    color = Color.Black,
-//                    fontSize = 20.sp,
-//                    //fontFamily = Typography.h3.fontFamily,
-//                    fontWeight = FontWeight.W600,
-//                    textAlign = TextAlign.Center,
-//                    modifier = Modifier.padding(5.dp)
-//
-//                )
-//
-//                Row(
-//                    verticalAlignment = Alignment.CenterVertically
-//                ) {
-//                    Image(
-//                        painter = painterResource(id = R.drawable.error),
-//                        contentDescription = "Location",
-//                        modifier = Modifier.size(17.dp)
-//                    )
-//
-//                    Text(
-//                        text = deviceHolderDetail.lastName ?: "N/A",
-//                        color = Color.Black,
-//                        //fontSize = Typography.body1.fontSize,
-//                        textAlign = TextAlign.Center,
-//                        modifier = Modifier.padding(2.dp)
-//                    )
-//
-//                }
-//
-//
-//            }
-//        }
-//
-//
-//        Column(
-//            modifier = Modifier
-//                .verticalScroll(rememberScrollState())
-//                .padding(20.dp)
-//        ) {
-//            Text(
-//                text = deviceHolderDetail.toString(),
-//                color = Color.Black,
-//                //fontSize = Typography.h6.fontSize,
-//                //fontFamily = Typography.h6.fontFamily,
-//            )
-//        }
-
-
     }
 
 

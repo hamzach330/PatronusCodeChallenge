@@ -2,6 +2,8 @@
 <resources>
 
     <style name="Theme.PatronusCodeChallenge" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">@color/purple_700</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:fontFamily">@font/rubik_variablefont_wght</item>
+
     </style>
 </resources>
